@@ -1,5 +1,6 @@
 #include "acequia_manager.h"
 #include <iostream>
+using namespace std;
 
 /*Instructions for this problem:
 
@@ -47,7 +48,7 @@ void solveProblems(AcequiaManager& manager)
 
 
 /*example 2 format*/
-
+/*
 void solveProblems(AcequiaManager& manager)
 {
 	auto canals = manager.getCanals();
@@ -78,7 +79,7 @@ void solveProblems(AcequiaManager& manager)
 		manager.nexthour();
 	}
 }
-
+*/
 
 /*example 2*/
 /*
@@ -122,7 +123,7 @@ void solveProblems(AcequiaManager& manager)
 //This would be the perfect opportunity to identify the tools learned from ECE 231L such as:
 //data structures (stacks, queues, trees(?)), templates, vector class functions, etc... to aid in the algorithm solution
 
-/*
+
 int findCanal(std::vector<Canal *> canals, std::string region)
 {
 	int match;
@@ -157,8 +158,28 @@ void solveProblems(AcequiaManager& manager)
 	bool check = false;
 	auto canals = manager.getCanals();
 	auto regions = manager.getRegions();
+
 	while(!manager.isSolved && manager.hour!=manager.SimulationMax)
 	{
+		auto northLevel = regions[0]->waterLevel;
+		auto northNeed = regions[0]->waterNeed;
+		auto northCapacity = regions[0]->waterCapacity;
+
+		auto southLevel = regions[1]->waterLevel;
+		auto southNeed = regions[1]->waterNeed;
+		auto southCapacity = regions[1]->waterCapacity;
+
+
+		auto eastLevel = regions[2]->waterLevel;
+		auto eastNeed = regions[2]->waterNeed;
+		auto eastCapacity = regions[2]->waterCapacity;
+
+
+		cout << northLevel;
+
+		if(northLevel <= northNeed){
+			
+		}
 		
 		if(manager.hour == 0)
 		{
@@ -179,7 +200,8 @@ void solveProblems(AcequiaManager& manager)
 			else if(regions[i]->isInDrought = true)
 			{
 				//find canal to move water
-				close
+				
+				// close();
 			}
 
 			else if(regions[i]->isFlooded == true && regions[i]->isInDrought == true)
@@ -191,4 +213,12 @@ void solveProblems(AcequiaManager& manager)
 		manager.nexthour();
 	}
 }
-*/
+
+double findFlowRate(double waterLevel, double waterNeed){
+
+	double waterDifference = abs(waterLevel-waterNeed);
+	if(waterDifference <= 0){
+		cout << "Acequia " << acequiaIndex <<  " CANNOT give more water"
+	}
+
+}
