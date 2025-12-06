@@ -123,6 +123,7 @@ void solveProblems(AcequiaManager& manager)
 //This would be the perfect opportunity to identify the tools learned from ECE 231L such as:
 //data structures (stacks, queues, trees(?)), templates, vector class functions, etc... to aid in the algorithm solution
 
+//WATER LEVEL AND WATER CAPACITY IS IN THOUSAND OF GALLONS I.E: 36 is 36000 gallons flow rate of 1, is 3600 gallons per hour = 3.6
 
 int findCanal(std::vector<Canal *> canals, std::string region)
 {
@@ -161,22 +162,98 @@ void solveProblems(AcequiaManager& manager)
 
 	while(!manager.isSolved && manager.hour!=manager.SimulationMax)
 	{
-		auto northLevel = regions[0]->waterLevel;
-		auto northNeed = regions[0]->waterNeed;
-		auto northCapacity = regions[0]->waterCapacity;
+		double northLevel = regions[0]->waterLevel;
+		double northNeed = regions[0]->waterNeed;
+		double northCapacity = regions[0]->waterCapacity;
 
-		auto southLevel = regions[1]->waterLevel;
-		auto southNeed = regions[1]->waterNeed;
-		auto southCapacity = regions[1]->waterCapacity;
-
-
-		auto eastLevel = regions[2]->waterLevel;
-		auto eastNeed = regions[2]->waterNeed;
-		auto eastCapacity = regions[2]->waterCapacity;
+		double southLevel = regions[1]->waterLevel;
+		double southNeed = regions[1]->waterNeed;
+		double southCapacity = regions[1]->waterCapacity;
 
 
-		cout << northLevel;
+		double eastLevel = regions[2]->waterLevel;
+		double eastNeed = regions[2]->waterNeed;
+		double eastCapacity = regions[2]->waterCapacity;
 
+		double north_diff = northLevel - northNeed;
+		double east_diff = eastLevel - eastNeed;
+		double south_diff = southLevel - southNeed;
+		
+		canals[1]->toggleOpen(true);
+		canals[1]->setFlowRate(1);
+
+		cout << northLevel << endl;
+		cout << southLevel << endl;
+		cout << eastLevel << endl;
+
+		if(regions[0]->isInDrought == true && east_diff < south_diff)
+		{
+			
+		}
+		else if(regions[0]->isInDrought == true && south_diff < east_diff)
+		{
+		
+		}
+
+		if(regions[1]->isInDrought == true && north_diff < east_diff)
+		{
+
+		}
+		else if(regions[1]->isInDrought == true && east_diff < north_diff)
+		{
+
+		}
+
+		if(regions[2]->isInDrought == true && north_diff < south_diff)
+		{
+
+		}
+		else if(regions[2]->isInDrought == true && south_diff < north_diff)
+		{
+		
+		}
+
+
+		if(regions[0]->isFlooded == true && east_diff < south_diff)
+		{
+			
+		}
+		else if(regions[0]-> isFlooded == true && south_diff < east_diff)
+		{
+		
+		}
+
+		if(regions[1]-> isFlooded == true && north_diff < east_diff)
+		{
+
+		}
+		else if(regions[1]-> isFlooded == true && east_diff < north_diff)
+		{
+
+		}
+
+		if(regions[2]-> isFlooded == true && north_diff < south_diff)
+		{
+
+		}
+		else if(regions[2]-> isFlooded == true && south_diff < north_diff)
+		{
+		
+		}
+		
+			// Region Difference check for loop
+		/*for (int i = 0; i < regions.size(); ++i){
+			if(regions[i]->isInDrought == true)
+			{
+				
+			} 
+			else if (regions[i]->isFlooded == true)
+			{
+				regions[i]->name;	
+			}
+			
+		}*/
+		
 		if(northLevel <= northNeed){
 			
 		}
@@ -214,11 +291,14 @@ void solveProblems(AcequiaManager& manager)
 	}
 }
 
-double findFlowRate(double waterLevel, double waterNeed){
 
+double findFlowRate(double waterLevel, double waterNeed)
+{
+	double flowRate;
 	double waterDifference = abs(waterLevel-waterNeed);
-	if(waterDifference <= 0){
-		cout << "Acequia " << acequiaIndex <<  " CANNOT give more water"
+	
+	if(waterDifference <= 0)
+	{
+		flowRate = 0;
 	}
-
 }
