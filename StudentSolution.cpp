@@ -258,7 +258,6 @@ void solveProblems(AcequiaManager& manager)
                 canals[1]->setFlowRate(0);
                 canals[2]->setFlowRate(0);
                 canals[3]->setFlowRate(0);
-                cout << "\n" << endl;
         }
 
         for (int i = 0; i < 4; i++){
