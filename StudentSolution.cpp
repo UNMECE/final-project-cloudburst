@@ -89,7 +89,7 @@ void solveProblems(AcequiaManager& manager)
                                 a = i;
                         }
                 }
-                double tempFlowRate = 0, tempDiff = 0, beforeFlowRate = 0;
+                
                 double mainDiff = 0, finalFlow = 0, preSet = 0;
 
                 switch (a){
